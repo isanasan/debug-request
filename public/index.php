@@ -7,13 +7,13 @@ $whoops = new \Whoops\Run();
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
 $whoops->register();
 
-$psr7Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
+$psr17Factory = new \Nyholm\Psr7\Factory\Psr17Factory();
 
 $creator = new \Nyholm\Psr7Server\ServerRequestCreator(
-    $psr7Factory,
-    $psr7Factory,
-    $psr7Factory,
-    $psr7Factory
+    $psr17Factory,
+    $psr17Factory,
+    $psr17Factory,
+    $psr17Factory
 );
 
 $serverRequest = $creator->fromGlobals();
@@ -21,5 +21,10 @@ $serverRequest = $creator->fromGlobals();
 $path = $serverRequest->getUri()->getPath();
 
 if ($path === '/now') {
-    echo date('Y-m-d H:i:s');
+    $response = $psr17Factory->createResponse(200)
+        ->withBody(
+            $psr17Factory->createStream(date('Y-m-d H:i:s'))
+        );
 }
+
+echo (string) $response->getBody();
