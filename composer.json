@@ -6,6 +6,7 @@
     },
     "require-dev": {
         "symfony/var-dumper": "^5.3",
-        "filp/whoops": "^2.13"
+        "filp/whoops": "^2.13",
+        "bamarni/composer-bin-plugin": "^1.4"
     }
 }
