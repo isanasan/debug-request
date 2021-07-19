@@ -23,6 +23,11 @@ $path = $serverRequest->getUri()->getPath();
 if ($path === '/now') {
     $handler = new \isanasan\MyPsr\Http\Handler\DateAction();
     $response = $handler->handle($serverRequest);
+} else {
+    $response = $psr17Factory->createResponse(404)
+        ->withBody(
+            $psr17Factory->createStream('not found')
+        );
 }
 
 echo (new \Laminas\HttpHandlerRunner\Emitter\SapiEmitter())->emit($response);
