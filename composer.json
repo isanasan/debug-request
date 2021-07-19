@@ -1,8 +1,14 @@
 {
+    "autoload": {
+        "psr-4": {
+            "isanasan\\MyPsr\\":"src"
+        }
+    }, 
     "require": {
         "php": "^8.0",
         "nyholm/psr7": "^1.4",
-        "nyholm/psr7-server": "^1.0"
+        "nyholm/psr7-server": "^1.0",
+        "laminas/laminas-httphandlerrunner": "^2.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.3",
